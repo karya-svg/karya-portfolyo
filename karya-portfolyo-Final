@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Karya Çayır</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Karya Çayır</h1><nav><a href="#projeler">Projeler</a><a href="#iletisim">İletişim</a></nav></header>
+<section class="hero">
+<img class="clickable" src="images/profil.jpg" alt="Profil">
+<h2>Grafik Tasarım Öğrencisi</h2>
+<p>Kurumsal Kimlik • Afiş • Sosyal Medya Tasarımı</p>
+</section>
+<section id="projeler">
+<h2 class="projects-title">Projeler</h2>
+<div class="gallery">
+<div class="card"><img class="clickable" src="images/kurumsal-kimlik.jpg"><p>Kurumsal Kimlik</p></div>
+<div class="card"><img class="clickable" src="images/takvim.jpg"><p>Takvim</p></div>
+<div class="card"><img class="clickable" src="images/urun-afisi.jpg"><p>Ürün Afişi</p></div>
+<div class="card"><img class="clickable" src="images/karton-tasarimi.jpg"><p>Karton Tasarımı</p></div>
+<div class="card"><img class="clickable" src="images/tiyatro-afis.jpg"><p>Tiyatro Afişi</p></div>
+<div class="card"><img class="clickable" src="images/infografik.jpg"><p>İnfografik</p></div>
+</div>
+</section>
+<section id="iletisim">
+<h2>İletişim</h2>
+<p>📧 <a href="mailto:karyacyr48@gmail.com">karyacyr48@gmail.com</a></p>
+<p><a href="https://www.instagram.com/cariavisage/" target="_blank">@cariavisage</a></p>
+</section>
+<div id="lightbox"><span id="close">&times;</span><img id="lightbox-img"></div>
+<script src="script.js"></script>
+</body></html>
+Kendi görsellerinizi images klasörüne şu isimlerle ekleyin:
+profil.jpg
+kurumsal-kimlik.jpg
+takvim.jpg
+urun-afisi.jpg
+karton-tasarimi.jpg
+tiyatro-afis.jpg
+infografik.jpg
+
+const box=document.getElementById('lightbox');
+const img=document.getElementById('lightbox-img');
+document.querySelectorAll('.clickable').forEach(i=>{
+ i.onclick=()=>{img.src=i.src;box.style.display='flex';}
+});
+document.getElementById('close').onclick=()=>box.style.display='none';
+box.onclick=e=>{if(e.target===box)box.style.display='none';};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')box.style.display='none';});
+
+body{margin:0;font-family:Arial,sans-serif;background:#0b0b0b;color:#fff}
+header{display:flex;justify-content:space-between;padding:20px 8%;position:sticky;top:0;background:#111}
+a{color:#fff;text-decoration:none;margin-left:20px}
+.hero{text-align:center;padding:60px 20px}
+.hero img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid #fff}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:20px}
+.card{background:#1a1a1a;border-radius:12px;overflow:hidden}
+.card img{width:100%;height:220px;object-fit:cover}
+.card p{text-align:center;padding:10px}
+#iletisim{text-align:center;padding:50px}
+
+.projects-title{font-size:42px;margin-left:20px}
+.clickable{cursor:pointer}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);align-items:center;justify-content:center;z-index:9999}
+#lightbox img{max-width:92%;max-height:92%;border-radius:12px}
+#close{position:absolute;top:20px;right:35px;font-size:48px;color:#fff;cursor:pointer}
